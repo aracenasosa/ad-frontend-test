@@ -3,10 +3,30 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --checkout-button-color: #585660;
+  --checkout-button-hover-color: #4a4a52;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.checkout-button {
+  background-color: var(--checkout-button-color);
+  transition: background-color 0.2s;
+}
+
+.checkout-button:hover {
+  background-color: var(--checkout-button-hover-color);
+}
+
+.checkout-link {
+  color: var(--checkout-button-color);
+  transition: color 0.2s;
+}
+
+.checkout-link:hover {
+  color: var(--checkout-button-hover-color);
 }

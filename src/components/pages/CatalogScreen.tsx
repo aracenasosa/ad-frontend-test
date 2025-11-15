@@ -22,10 +22,12 @@ export default async function CatalogScreen({ searchParams }: CatalogScreenProps
   
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
   const url = new URL(`${baseUrl}/api/games`);
-  url.searchParams.set('page', page);
+  
+  // Set query parameters: genre first, then page
   if (genre) {
     url.searchParams.set('genre', genre);
   }
+  url.searchParams.set('page', page);
   
   const response = await fetch(url.toString(), {
     cache: 'no-store', // Ensure fresh data on each request

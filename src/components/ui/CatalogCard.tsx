@@ -1,13 +1,11 @@
 import { GamesResponse } from "../pages/CatalogScreen";
 import Image from "next/image";
+import AddToCartButton from "./AddToCartButton";
 
 
 async function CatalogCard({ data }: { data: GamesResponse | undefined }) {
 
     const { games, totalPages, currentPage } = data || { games: [], totalPages: 0, currentPage: 0 };
-    console.log(games, 'games');
-    console.log(totalPages, 'totalPages');
-    console.log(currentPage, 'currentPage');
 
     return (
       <>
@@ -45,9 +43,7 @@ async function CatalogCard({ data }: { data: GamesResponse | undefined }) {
                         ${game.price.toFixed(2)}
                       </span>
                     </div>
-                    <button className="mt-auto w-full bg-transparent border-2 border-gray-800 text-gray-800 uppercase text-sm font-semibold py-3 rounded hover:bg-gray-800 hover:text-white transition-colors duration-200 cursor-pointer">
-                      ADD TO CART
-                    </button>
+                    <AddToCartButton game={game} />
                   </div>
                 </div>
               ))}

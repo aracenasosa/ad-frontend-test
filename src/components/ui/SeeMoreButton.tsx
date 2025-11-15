@@ -50,7 +50,7 @@ export default function SeeMoreButton({ currentPage, totalPages, currentGenre }:
       {hasPreviousPage && (
         <button 
           onClick={() => handlePageChange(currentPage - 1)}
-          className="bg-gray-700 text-white px-6 py-3 rounded-md font-semibold hover:bg-gray-800 transition-colors duration-200"
+          className="bg-gray-700 text-white px-6 py-3 rounded-md font-semibold hover:bg-gray-800 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
         >
           PREVIOUS
         </button>
@@ -58,7 +58,7 @@ export default function SeeMoreButton({ currentPage, totalPages, currentGenre }:
       {hasNextPage && (
         <button 
           onClick={() => handlePageChange(currentPage + 1)}
-          className="bg-gray-700 text-white px-6 py-3 rounded-md font-semibold hover:bg-gray-800 transition-colors duration-200"
+          className="bg-gray-700 text-white px-6 py-3 rounded-md font-semibold hover:bg-gray-800 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
         >
           SEE MORE
         </button>
