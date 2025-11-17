@@ -3,8 +3,8 @@
 import { useCart } from '@/contexts/CartContext';
 import Image from 'next/image';
 import Link from 'next/link';
-import CartItemsList from '@/components/ui/CartItemsList';
-import OrderSummary from '@/components/ui/OrderSummary';
+import CartItemsList from '@/components/ui/cart/CartItemsList';
+import OrderSummary from '@/components/ui/cart/OrderSummary';
 
 export default function CartScreen() {
   const { cartItems, getTotalItems } = useCart();

@@ -12,9 +12,7 @@ export default function Navbar() {
     setIsMounted(true);
   }, []);
 
-  // Calculate total items
   const itemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
-
 
   return (
     <nav className='w-full flex justify-between items-center p-4 bg-gray-200'>
@@ -48,4 +46,4 @@ export default function Navbar() {
     </nav>
   )
 }
-  
+

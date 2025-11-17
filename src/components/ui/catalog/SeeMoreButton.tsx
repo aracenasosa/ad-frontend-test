@@ -16,12 +16,10 @@ export default function SeeMoreButton({ currentPage, totalPages, currentGenre }:
   const { setLoading } = useLoading();
 
   const handlePageChange = (newPage: number) => {
-    // Check if the page is actually changing
     if (newPage === currentPage) {
-      return; // Don't do anything if clicking the same page
+      return;
     }
     
-    // Show loading immediately
     setLoading(true);
     
     const params = new URLSearchParams(searchParams.toString());
@@ -40,7 +38,6 @@ export default function SeeMoreButton({ currentPage, totalPages, currentGenre }:
   const hasNextPage = currentPage < totalPages;
   const hasPreviousPage = currentPage > 1;
 
-  // Don't show anything if we're on page 1 and there's no next page
   if (!hasNextPage && !hasPreviousPage) {
     return null;
   }

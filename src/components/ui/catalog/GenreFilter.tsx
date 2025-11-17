@@ -20,14 +20,12 @@ export default function GenreFilter({ availableFilters, currentGenre }: GenreFil
   const selectedValue = currentGenre || 'All';
 
   const handleGenreChange = (genre: string) => {
-    // Check if the genre is actually changing
     const newGenre = genre === 'All' || genre === '' ? null : genre;
     if (newGenre === currentGenre) {
       setIsOpen(false);
-      return; // Don't do anything if selecting the same genre
+      return;
     }
     
-    // Show loading immediately
     setLoading(true);
     
     const params = new URLSearchParams(searchParams.toString());
@@ -38,7 +36,6 @@ export default function GenreFilter({ availableFilters, currentGenre }: GenreFil
       params.set('genre', genre);
     }
     
-    // Reset to page 1 when filtering
     params.set('page', '1');
     
     const queryString = params.toString();
@@ -46,7 +43,6 @@ export default function GenreFilter({ availableFilters, currentGenre }: GenreFil
     setIsOpen(false);
   };
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {

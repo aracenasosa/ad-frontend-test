@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import CatalogScreen from "@/components/pages/CatalogScreen";
-import LoadingSpinner from "@/components/ui/LoadingSpinner";
-import CatalogLoader from "@/components/ui/CatalogLoader";
+import LoadingSpinner from "@/components/ui/common/LoadingSpinner";
+import CatalogLoader from "@/components/ui/common/CatalogLoader";
 
 export default async function Home({
   searchParams,

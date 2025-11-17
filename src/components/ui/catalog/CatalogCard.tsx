@@ -1,6 +1,6 @@
-import { GamesResponse } from "../pages/CatalogScreen";
 import Image from "next/image";
-import AddToCartButton from "./AddToCartButton";
+import AddToCartButton from "../common/AddToCartButton";
+import { GamesResponse } from "@/services/gamesService";
 
 
 async function CatalogCard({ data }: { data: GamesResponse | undefined }) {
@@ -59,3 +59,4 @@ async function CatalogCard({ data }: { data: GamesResponse | undefined }) {
 }
 
 export default CatalogCard;
+

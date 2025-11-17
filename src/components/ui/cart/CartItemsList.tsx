@@ -42,6 +42,11 @@ export default function CartItemsList() {
                 fill
                 className="object-cover rounded"
               />
+              {item.isNew && (
+                <span className="absolute top-1 left-1 text-xs font-bold px-1.5 py-0.5 rounded" style={{ backgroundColor: '#F5F5F4', color: '#3B3B3B' }}>
+                  New
+                </span>
+              )}
             </div>
             
             <div className="flex-grow flex flex-col justify-between">
