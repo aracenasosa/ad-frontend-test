@@ -8,15 +8,17 @@ interface SeeMoreButtonProps {
   currentGenre?: string | null;
 }
 
-export default function SeeMoreButton({ currentPage, totalPages, currentGenre }: SeeMoreButtonProps) {
+export default function SeeMoreButton({
+  currentPage,
+  totalPages,
+  currentGenre,
+}: SeeMoreButtonProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   const handlePageChange = (newPage: number) => {
-    if (newPage === currentPage) {
-      return;
-    }
+    if (newPage === currentPage) return;
 
     const params = new URLSearchParams(searchParams.toString());
     params.set('page', newPage.toString());
@@ -34,24 +36,40 @@ export default function SeeMoreButton({ currentPage, totalPages, currentGenre }:
   const hasNextPage = currentPage < totalPages;
   const hasPreviousPage = currentPage > 1;
 
-  if (!hasNextPage && !hasPreviousPage) {
-    return null;
-  }
+  if (!hasNextPage && !hasPreviousPage) return null;
 
   return (
-    <div className="mt-8 flex justify-start gap-4">
+    <div
+      className="
+        mt-8
+        flex flex-col gap-3          
+        sm:flex-row sm:justify-center  
+      "
+    >
       {hasPreviousPage && (
-        <button 
+        <button
           onClick={() => handlePageChange(currentPage - 1)}
-          className="bg-gray-700 text-white px-6 py-3 rounded-md font-semibold hover:bg-gray-800 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
+          className="
+            w-full sm:w-auto          
+            bg-gray-700 text-white
+            px-6 py-3 rounded-md font-semibold
+            hover:bg-gray-800 hover:scale-105 active:scale-95
+            transition-all duration-200 cursor-pointer
+          "
         >
           PREVIOUS
         </button>
       )}
       {hasNextPage && (
-        <button 
+        <button
           onClick={() => handlePageChange(currentPage + 1)}
-          className="bg-gray-700 text-white px-6 py-3 rounded-md font-semibold hover:bg-gray-800 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
+          className="
+            w-full sm:w-auto
+            bg-gray-700 text-white
+            px-6 py-3 rounded-md font-semibold
+            hover:bg-gray-800 hover:scale-105 active:scale-95
+            transition-all duration-200 cursor-pointer
+          "
         >
           SEE MORE
         </button>
