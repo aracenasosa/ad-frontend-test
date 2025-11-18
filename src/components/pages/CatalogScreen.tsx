@@ -1,30 +1,31 @@
+'use client';
+
+import { useSearchParams } from "next/navigation";
+import { useGames } from "@/utils/shared/hooks/useGames";
 import CatalogCard from "../ui/catalog/CatalogCard";
 import GenreFilter from "../ui/catalog/GenreFilter";
 import SeeMoreButton from "../ui/catalog/SeeMoreButton";
-import { fetchGames, GamesResponse } from "@/services/gamesService";
 
-interface CatalogScreenProps {
-  searchParams?: { genre?: string; page?: string };
-}
+export default function CatalogScreen() {
+  const searchParams = useSearchParams();
 
-export default async function CatalogScreen({ searchParams }: CatalogScreenProps) {
-  const page = searchParams?.page || '1';
-  const genre = searchParams?.genre || '';
-  
-  let data: GamesResponse;
-  try {
-    data = await fetchGames(genre, page);
-  } catch (error) {
+  const page = searchParams.get("page") || "1";
+  const genre = searchParams.get("genre") || "";
+
+  const { data, error } = useGames(genre, page);
+
+  if (error) {
     return (
       <div className="p-24">
-        <p className="text-red-600">Error loading games</p>
+        <p className="text-red-600">{error}</p>
       </div>
     );
   }
 
+  if (!data) return null;
+
   return (
     <div className="w-full max-w-[1600px] mx-auto px-6 py-8">
-      {/* Top Sellers Title and Filter Section */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
         <h1 className="text-2xl md:text-4xl font-bold text-gray-800">Top Sellers</h1>
         <GenreFilter 
@@ -33,10 +34,8 @@ export default async function CatalogScreen({ searchParams }: CatalogScreenProps
         />
       </div>
 
-      {/* Catalog Cards */}
       <CatalogCard data={data} />
 
-      {/* See More Button */}
       <SeeMoreButton 
         currentPage={data.currentPage}
         totalPages={data.totalPages}

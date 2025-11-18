@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Archivo } from "next/font/google";
 import "./globals.css";
 import { LoadingProvider } from "@/contexts/LoadingContext";
 import { CartProvider } from "@/contexts/CartContext";
 import Navbar from "@/components/ui/common/Navbar";
 import Footer from "@/components/ui/common/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const archivo = Archivo({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
   title: "Apply Digital Test",
@@ -20,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={archivo.className}>
         <LoadingProvider>
           <CartProvider>
             <Navbar />

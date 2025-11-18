@@ -20,7 +20,6 @@ const TestComponent = ({ games }: { games: Game[] }) => {
   
   React.useEffect(() => {
     games.forEach(game => addToCart(game));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return <OrderSummary />;

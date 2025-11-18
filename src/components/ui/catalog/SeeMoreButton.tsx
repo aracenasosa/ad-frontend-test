@@ -1,7 +1,6 @@
 'use client';
 
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
-import { useLoading } from '@/contexts/LoadingContext';
 
 interface SeeMoreButtonProps {
   currentPage: number;
@@ -13,24 +12,21 @@ export default function SeeMoreButton({ currentPage, totalPages, currentGenre }:
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const { setLoading } = useLoading();
 
   const handlePageChange = (newPage: number) => {
     if (newPage === currentPage) {
       return;
     }
-    
-    setLoading(true);
-    
+
     const params = new URLSearchParams(searchParams.toString());
     params.set('page', newPage.toString());
-    
+
     if (currentGenre) {
       params.set('genre', currentGenre);
     } else {
       params.delete('genre');
     }
-    
+
     const queryString = params.toString();
     router.push(`${pathname}?${queryString}`);
   };
@@ -63,4 +59,3 @@ export default function SeeMoreButton({ currentPage, totalPages, currentGenre }:
     </div>
   );
 }
-

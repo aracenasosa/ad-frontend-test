@@ -2,7 +2,6 @@
 
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { useState, useRef, useEffect } from 'react';
-import { useLoading } from '@/contexts/LoadingContext';
 
 interface GenreFilterProps {
   availableFilters: string[];
@@ -13,7 +12,6 @@ export default function GenreFilter({ availableFilters, currentGenre }: GenreFil
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
-  const { setLoading } = useLoading();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -21,23 +19,22 @@ export default function GenreFilter({ availableFilters, currentGenre }: GenreFil
 
   const handleGenreChange = (genre: string) => {
     const newGenre = genre === 'All' || genre === '' ? null : genre;
+  
     if (newGenre === currentGenre) {
       setIsOpen(false);
       return;
     }
-    
-    setLoading(true);
-    
+  
     const params = new URLSearchParams(searchParams.toString());
-    
+  
     if (genre === 'All' || genre === '') {
       params.delete('genre');
     } else {
       params.set('genre', genre);
     }
-    
+  
     params.set('page', '1');
-    
+  
     const queryString = params.toString();
     router.push(`${pathname}?${queryString}`);
     setIsOpen(false);
