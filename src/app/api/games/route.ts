@@ -18,7 +18,7 @@ export async function GET(request: Request) {
   if (page < 1 || isNaN(page)) page = 1;
 
   // Mock a delay to simulate a real API
-  await delay(2000);
+  await delay(200);
 
   // Calculate total pages based on filtered games
   const totalFilteredGames = games.length;

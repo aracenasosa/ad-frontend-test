@@ -1,15 +1,16 @@
 # Game Shop
 
-A simple e-commerce app for browsing and buying video games. Built this to practice with Next.js 15 and React 19, focusing on creating a smooth user experience with filtering, pagination, and a clean UI.
+A simple e-commerce app for browsing and buying video games. Built to practice with **Next.js 15** and **React 19**, focusing on a smooth user experience with filtering, pagination, clean UI, and component-level testing.
 
-## What's Inside
+## 📦 What's Inside
 
-- Game catalog with static data (30 games for now)
+- Game catalog with static data (30 games)
 - Filter games by genre
-- Pagination to browse through all games
-- Shopping cart page (basic setup)
-- Responsive design that works on mobile and desktop
+- URL-based pagination
+- Shopping cart with add/remove/update logic
+- Responsive design for mobile and desktop
 - Loading states for better UX
+- **Unit tests for components and cart logic (Jest + React Testing Library)**
 
 ## Tech Stack
 
@@ -17,6 +18,30 @@ A simple e-commerce app for browsing and buying video games. Built this to pract
 - React 19
 - TypeScript
 - Tailwind CSS
+- Jest
+- React Testing Library
+
+## 🧪 Testing
+
+This project includes a full suite of tests to ensure UI components and state logic behave consistently across scenarios.
+
+### What’s tested?
+
+- **Cart Context**
+  - Add items
+  - Remove items
+  - Update quantity
+  - Totals calculation
+  - Local storage persistence  
+
+- **Order Summary**
+  - Renders items
+  - Shows “Show more / Show less”
+  - Displays correct total price  
+
+- **Add to Cart Button**
+  - Toggles between “ADD TO CART” and “REMOVE”
+  - Adds/removes items correctly  
 
 ## Getting Started
 
@@ -24,10 +49,9 @@ A simple e-commerce app for browsing and buying video games. Built this to pract
 npm install
 npm run dev
 ```
+### Run tests
 
-Open [http://localhost:3000](http://localhost:3000) to see it in action.
+```bash
+npm run test
 
-## Notes
-
-The game data is hardcoded in the codebase - no database or external API calls. Just static data to keep things simple and focus on the frontend implementation.
 
